@@ -49,7 +49,6 @@ table{border-collapse:collapse;}
 		<th>Nama</th>
 		<th>Tempat Lahir</th>
 		<th>Email</th>
-		<th>Jenis Kelamin</th>
 		<th>Jurusan</th>
 		<th>Gambar</th>
 		<th>Action</th>
@@ -62,7 +61,6 @@ table{border-collapse:collapse;}
 <td><?= $row["nama"];?></td>
 <td><?= $row["tempatLahir"];?></td>
 <td><?= $row["email"];?></td>
-<td><?= $row["jenisKelamin"];?></td>
 <td><?= $row["jurusan"];?></td>
 <td><img src="img/<?= $row["gambar"]; ?>" width="50" height="50"></td>
 <td>

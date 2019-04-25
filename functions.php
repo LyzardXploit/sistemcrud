@@ -16,7 +16,6 @@ function tambah($data) {
 	$nama = htmlspecialchars($data["nama"]);
 	$tempatLahir = htmlspecialchars($data["tempatLahir"]);
 	$email = htmlspecialchars($data["email"]);
-	$jenisKelamin = htmlspecialchars($data["jenisKelamin"]);
 	$jurusan = htmlspecialchars($data["jurusan"]);
 	// upload gambar 
 	$gambar = upload();
@@ -24,15 +23,15 @@ function tambah($data) {
 		return false;
 	}
 		//query insert data
-	$query = "INSERT INTO sistem_crud
+	$query = "INSERT INTO siswa
 			  VALUES
-			  ('', '$nisn', '$nama', '$tempatLahir', '$email', '$jenisKelamin', '$jurusan', '$gambar')
+			  ('', '$nisn', '$nama', '$tempatLahir', '$email','$jurusan', '$gambar')
 			  ";  
 	mysqli_query($conn, $query);
 	return mysqli_affected_rows($conn);
 }
 function upload() {
-		$namaFile = $_FILES['gambar']['nama'];
+		$namaFile = $_FILES['gambar']['name'];
 		$ukuranFile = $_FILES['gambar']['size'];
 		$error = $_FILES['gambar']['error'];
 		$tmpName = $_FILES['gambar']['tmp_name'];
@@ -45,14 +44,14 @@ function upload() {
 					return false;
 		}
 		// cek apakah yang di upload adalah gambar
-		$ekstensigambarvalid = ['jpg', 'jpeg', 'png', '.JPG'];
+		$ekstensigambarvalid = ['jpg', 'jpeg', 'png', 'JPG'];
 		$ekstensigambar = explode('.', $namaFile);
 		$ekstensigambar = strtolower(end($ekstensigambar));
 		if( !in_array($ekstensigambar, $ekstensigambarvalid)) {
-			// echo "<script>
-			// 		alert('yang anda upload bukan gambar')
-			// 		</script>";
-			// 		return false;
+			echo "<script>
+					alert('yang anda upload bukan gambar')
+					</script>";
+					return false;
 		}
 		// cek jika ukurannya terlalu besar
 		if( $ukuranFile > 1000000) {
@@ -77,7 +76,6 @@ function ubah($data) {
 	$nama = htmlspecialchars($data["nama"]);
 	$tempatLahir = htmlspecialchars($data["tempatLahir"]);
 	$email = htmlspecialchars($data["email"]);
-	$jenisKelamin = htmlspecialchars($data["jenisKelamin"]);
 	$jurusan = htmlspecialchars($data["jurusan"]);
 	$gambarLama = htmlspecialchars($data["gambarLama"]);
 	// cek apakah iser pilih gambar baru / tidak
@@ -93,7 +91,6 @@ function ubah($data) {
 			nama = '$nama',
 			tempatLahir = '$tempatLahir',
 			email = '$email',
-			jenisKelamin = '$jenisKelamin',
 			jurusan = '$jurusan',
 			gambar = '$gambar'
 			WHERE id =$id

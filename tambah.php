@@ -12,10 +12,10 @@ if( isset($_POST["submit"])){
 				</script>
  			";
  	}else {
- 		// echo "<script>
-			// 	alert('data gagal ditambahkan!');
-			// 	document,location.href = 'index.php';
-			// 	</script>";
+ 		echo "<script>
+				alert('data gagal ditambahkan!');
+				document,location.href = 'index.php';
+				</script>";
  	}
 	}
 ?>
@@ -50,7 +50,6 @@ if( isset($_POST["submit"])){
 				<input type="text" name="nama" id="nama" placeholder="Nama Lengkap"><br>
 				<input type="text" name="tempatLahir" id="tempatLahir" placeholder="Tempat Lahir"><br>
 				<input type="text" name="email" id="email" placeholder="email"><br>
-				Laki Laki<input type="radio" name="jenisKelamin" id="jenisKelamin" value="Laki-laki">Perempuan<input type="radio" name="jenisKelamin" value="Perempuan"><br>
 				<select name="jurusan" id="jurusan">
 					<option>--Pilih Jurusan--</option>
 					<option value="tkj">TKJ</option>
